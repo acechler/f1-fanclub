@@ -22,7 +22,7 @@ const Navbar = () => {
       </div>
       <div
         id="navbar-menu"
-        className={`flex flex-col pt-4 space-y-4 lg:flex-row lg:justify-end lg:space-y-0 lg:space-x-8 lg:pt-0 ${
+        className={`flex flex-col pt-4 space-y-4 lg:flex-row lg:justify-end lg:space-y-0 lg:gap-10 lg:space-x-8 lg:pt-0 lg:pr-10 ${
           isOpen ? "block" : "hidden"
         } lg:flex transition-all duration-300 ease-in-out`}
       >
