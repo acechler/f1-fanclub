@@ -45,10 +45,10 @@ const Navbar = () => {
           About
         </Link>
         <Link
-          to="/events"
+          to="/news"
           className="p-2 rounded-md text-center"
         >
-          Events
+          News
         </Link>
       </div>
     </nav>
