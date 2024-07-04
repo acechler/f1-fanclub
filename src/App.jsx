@@ -1,21 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-
+import RacerDashboard
+ from "./components/RacerDashboard";
 const HomePage = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
-      <div className="bg-slate-600 p-6 rounded-lg hover:bg-slate-700 transition duration-300 ease-in-out">
-        <h2 className="text-white">Card</h2>
-      </div>
-      <div className="bg-slate-600 p-6 rounded-lg hover:bg-slate-700 transition duration-300 ease-in-out">
-        <h2 className="text-white">Card</h2>
-      </div>
-      <div className="bg-slate-600 p-6 rounded-lg hover:bg-slate-700 transition duration-300 ease-in-out">
-        <h2 className="text-white">Card</h2>
-      </div>
-      <div className="bg-slate-600 p-6 rounded-lg hover:bg-slate-700 transition duration-300 ease-in-out">
-        <h2 className="text-white">Card</h2>
-      </div>
+
     </div>
   );
 }
@@ -30,9 +20,9 @@ function App() {
         <div className="flex-1 p-6 lg:p-8 bg-gray-100">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/racers" element={<div>F1 Racers</div>} />
+            <Route path="/racers" element={<div>F1 Racers <RacerDashboard/> </div>} />
             <Route path="/about" element={<div>About</div>} />
-            <Route path="/events" element={<div>Events</div>} />
+            <Route path="/news" element={<div>News</div>} />
           </Routes>
         </div>
       </div>

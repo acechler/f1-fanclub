@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-slate-400 p-6 lg:p-4 lg:w-full">
+    <nav className="bg-neutral-200 p-6 lg:p-4 lg:w-full">
       <div className="lg:hidden flex justify-between items-center">
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -22,33 +22,33 @@ const Navbar = () => {
       </div>
       <div
         id="navbar-menu"
-        className={`flex flex-col pt-4 space-y-4 lg:flex-row lg:justify-end lg:space-y-0 lg:space-x-8 lg:pt-0 ${
+        className={`flex flex-col pt-4 space-y-4 lg:flex-row lg:justify-end lg:space-y-0 lg:gap-10 lg:space-x-8 lg:pt-0 lg:pr-10 ${
           isOpen ? "block" : "hidden"
         } lg:flex transition-all duration-300 ease-in-out`}
       >
         <Link
           to="/"
-          className="bg-slate-100 hover:bg-slate-200 focus:bg-white p-2 rounded-md text-center"
+          className="p-2 rounded-md text-center"
         >
           Home
         </Link>
         <Link
           to="/racers"
-          className="bg-slate-100 hover:bg-slate-200 focus:bg-white p-2 rounded-md text-center"
+          className="p-2 rounded-md text-center"
         >
           Racers
         </Link>
         <Link
           to="/about"
-          className="bg-slate-100 hover:bg-slate-200 focus:bg-white p-2 rounded-md text-center"
+          className="p-2 rounded-md text-center"
         >
           About
         </Link>
         <Link
-          to="/events"
-          className="bg-slate-100 hover:bg-slate-200 focus:bg-white p-2 rounded-md text-center"
+          to="/news"
+          className="p-2 rounded-md text-center"
         >
-          Events
+          News
         </Link>
       </div>
     </nav>
