@@ -17,7 +17,7 @@ function App() {
         <div className="w-full lg:w-full">
           <Navbar />
         </div>
-        <div className="flex mx-auto p-4 lg:p-4 bg-gray-100">
+        <div className="flex mx-auto p-4 lg:p-4 ">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/racers" element={<div>F1 Racers <RacerDashboard/> </div>} />
