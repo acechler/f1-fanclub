@@ -3,7 +3,7 @@ import React from "react";
 
 const RacerComponent = ({ headshot_url, full_name, driver_number }) => {
   return (
-    <div className="transform transition duration-300 hover:scale-105 rounded-lg shadow-lg w-56 hover:shadow-xl bg-white">
+    <div className="transform transition xl:align-middle duration-300 hover:scale-105 rounded-lg shadow-lg w-56 hover:shadow-xl bg-white">
       <div className="bg-gradient-to-br from-slate-100 via-slate-200 to-slate-400 p-4 rounded-t-lg">
         <img
           src={headshot_url}
