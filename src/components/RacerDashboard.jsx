@@ -4,6 +4,7 @@ import RacerComponent from "./RacerComponent";
 
 const RacerDashboard = () => {
   const [racers, setRacers] = useState([]);
+  const [racerSet, setRacerSet] = useState(new Set());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -11,6 +12,7 @@ const RacerDashboard = () => {
     fetch("https://api.openf1.org/v1/drivers")
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setRacers(data);
         setLoading(false);
       })
@@ -29,7 +31,7 @@ const RacerDashboard = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
       {racers.map((racer) => (
         <RacerComponent
           key={racer.driverId}
