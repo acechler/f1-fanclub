@@ -1,16 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import HomePage from "./components/pages/HomePage";
 import F1RacerPage from "./components/pages/F1RacerPage";
 import AboutPage from "./components/pages/AboutPage";
 import NewsPage from "./components/pages/NewsPage";
+import Navbar from "./components/Navbar";
 
-const HomePage = () => {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
-
-    </div>
-  );
-}
 
 function App() {
   return (
