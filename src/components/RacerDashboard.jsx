@@ -9,7 +9,7 @@ const RacerDashboard = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("https://api.openf1.org/v1/drivers")
+    fetch("https://api.openf1.org/v1/drivers?session_key=latest")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
