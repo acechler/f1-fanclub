@@ -4,7 +4,6 @@ import RacerComponent from "./RacerComponent";
 
 const RacerDashboard = () => {
   const [racers, setRacers] = useState([]);
-  const [racerSet, setRacerSet] = useState(new Set());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
