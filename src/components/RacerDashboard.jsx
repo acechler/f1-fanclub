@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect } from "react";
 import RacerComponent from "./RacerComponent";
 
-const RacerDashboard = () => {
+const RacerDashboard = ({ onSelectDriver }) => {
   const [racers, setRacers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -29,19 +28,23 @@ const RacerDashboard = () => {
     return <div>Error: {error.message}</div>;
   }
 
+  const handleSelectDriver = (racer) => {
+    onSelectDriver(racer);
+  };
+
   return (
     <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
       {racers.map((racer) => (
-        <RacerComponent
-          key={racer.driverId}
-          headshot_url={racer.headshot_url}
-          full_name={`${racer.full_name}`}
-          driver_number={racer.driver_number}
-        />
+        <div key={racer.driverId} onClick={() => handleSelectDriver(racer)}>
+          <RacerComponent
+            headshot_url={racer.headshot_url}
+            full_name={racer.full_name}
+            driver_number={racer.driver_number}
+          />
+        </div>
       ))}
     </div>
   );
 };
 
 export default RacerDashboard;
-

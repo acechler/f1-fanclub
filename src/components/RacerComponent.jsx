@@ -8,7 +8,7 @@ const RacerComponent = ({ headshot_url, full_name, driver_number }) => {
         <img
           src={headshot_url}
           alt={full_name}
-          className="h-32 w-32 object-cover rounded-full mx-auto"
+          className="object-cover rounded-full mx-auto"
           loading="lazy" // Add lazy loading for better performance
           style={{ maxWidth: "100%", height: "auto" }} // Ensure the image maintains its aspect ratio
         />

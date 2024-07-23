@@ -1,13 +1,17 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import DriverProfile from '../DriverProfile';
 import RacerDashboard from '../RacerDashboard';
 
 
 const F1RacerPage = () => {
-  return (
-    <div>
+  const [selectedDriver, setSelectedDriver] = useState(null);
 
-      <RacerDashboard/>
+  return (
+    <div className='grid grid-cols-2'>
+      <RacerDashboard onSelectDriver={setSelectedDriver} />
+      {selectedDriver && <DriverProfile driver={selectedDriver} />}
     </div>
   );
 };
