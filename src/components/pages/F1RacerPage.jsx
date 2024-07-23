@@ -9,10 +9,9 @@ const F1RacerPage = () => {
   const [selectedDriver, setSelectedDriver] = useState(null);
 
   return (
-    <div className='grid grid-cols-2'>
+    <div className='grid grid-cols-1'>
       <RacerDashboard onSelectDriver={setSelectedDriver} />
       {selectedDriver && <DriverProfile driver={selectedDriver} />}
-      {console.log(selectedDriver)}
     </div>
   );
 };
