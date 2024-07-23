@@ -12,6 +12,7 @@ const F1RacerPage = () => {
     <div className='grid grid-cols-2'>
       <RacerDashboard onSelectDriver={setSelectedDriver} />
       {selectedDriver && <DriverProfile driver={selectedDriver} />}
+      {console.log(selectedDriver)}
     </div>
   );
 };
