@@ -59,6 +59,7 @@ DriverProfile.propTypes = {
     full_name: PropTypes.string.isRequired,
     driver_number: PropTypes.number.isRequired,
     team_name : PropTypes.string.IsRequired,
+    headshot_url : PropTypes.string,
     // Add more prop types for other driver details
   }).isRequired,
 };
