@@ -4,9 +4,6 @@ import PropTypes from "prop-types";
 
 const DriverProfile = ({ driver }) => {
 
- 
-  
-
   return (
     <div className="flow-root">
 
