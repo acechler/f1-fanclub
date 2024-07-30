@@ -21,7 +21,7 @@ class RacerMap {
             ["Albon", "src/assets/images/racers/alexander.jpg"],
             ["Sargeant", "src/assets/images/racers/logan.jpg"],
             ["Tsunoda", "src/assets/images/racers/yuki.jpg"],
-            ["Ricciardo", "src/assets/images/racers/daniel.jpg"]
+            ["Ricciardo", "src/assets/images/racers/daniel.png"]
         ]);
     }
 

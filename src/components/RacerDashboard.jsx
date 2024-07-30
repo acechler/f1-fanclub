@@ -3,7 +3,6 @@ import RacerComponent from "./RacerComponent";
 import DriverProfile from "./DriverProfile";
 import { OPENF1_DRIVERS_API } from "../config";
 
-
 const RacerDashboard = ({ onSelectDriver }) => {
   const [racers, setRacers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -36,11 +35,14 @@ const RacerDashboard = ({ onSelectDriver }) => {
     setSelectedRacer(racer);
   };
 
+  const handleDeselectDriver = () => {
+    setSelectedRacer(null);
+  };
 
   return (
     <div>
       {selectedRacer ? (
-        <DriverProfile driver={selectedRacer} />
+        <DriverProfile driver={selectedRacer} onDeselectDriver={handleDeselectDriver} />
       ) : (
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
           {racers.map((racer) => (

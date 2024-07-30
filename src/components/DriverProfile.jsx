@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import RacerMap from "../components/Utilities/RacerMap"; // Adjusted the import path
+import RacerMap from "../components/Utilities/RacerMap";
 
-const DriverProfile = ({ driver }) => {
+
+const DriverProfile = ({ driver, onDeselectDriver }) => {
   const racerMap = new RacerMap();
-  const headshotUrl = racerMap.getImageSrc(driver.last_name);// || driver.headshot_url;
+  const imgUrl = racerMap.getImageSrc(driver.last_name);
+
 
   return (
     <div className="flow-root">
       <img
-        src={headshotUrl}
-        alt={driver.full_name}
-        className="object-cover rounded-full mx-auto"
-        loading="lazy" // Add lazy loading for better performance
-        style={{ maxWidth: "100%", height: "auto" }} // Ensure the image maintains its aspect ratio
+        src={imgUrl}
+        alt={`Headshot of ${driver.full_name}`}
+        className="object-cover rounded-full mx-auto my-10"
+        loading="lazy"
+        style={{ maxWidth: "100%", height: "auto" }}
       />
       <dl className="-my-3 divide-y divide-gray-100 text-sm">
         <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
@@ -38,6 +40,7 @@ const DriverProfile = ({ driver }) => {
           </dd>
         </div>
       </dl>
+      <button className="mt-10" onClick={onDeselectDriver} aria-label="Select another racer">Select Another Racer</button>
     </div>
   );
 };
@@ -50,6 +53,7 @@ DriverProfile.propTypes = {
     team_name: PropTypes.string.isRequired,
     headshot_url: PropTypes.string,
   }).isRequired,
+  onDeselectDriver: PropTypes.func.isRequired,
 };
 
 export default DriverProfile;

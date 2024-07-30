@@ -12,6 +12,7 @@ const Navbar = () => {
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-controls="navbar-menu"
+          aria-label="Toggle navigation menu"
         >
           <img
             src={Hamburger}
@@ -29,24 +30,28 @@ const Navbar = () => {
         <Link
           to="/"
           className="p-2 rounded-md text-center"
+          tabIndex={isOpen ? "0" : "-1"}
         >
           Home
         </Link>
         <Link
           to="/racers"
           className="p-2 rounded-md text-center"
+          tabIndex={isOpen ? "0" : "-1"}
         >
           Racers
         </Link>
         <Link
           to="/about"
           className="p-2 rounded-md text-center"
+          tabIndex={isOpen ? "0" : "-1"}
         >
           About
         </Link>
         <Link
           to="/news"
           className="p-2 rounded-md text-center"
+          tabIndex={isOpen ? "0" : "-1"}
         >
           News
         </Link>
