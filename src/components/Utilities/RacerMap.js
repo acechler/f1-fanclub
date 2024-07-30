@@ -1,4 +1,4 @@
-//todo convert to jpg and to firstname
+
 class RacerMap {
     constructor() {
         this.f1Racers = new Map([
@@ -11,17 +11,17 @@ class RacerMap {
             ["Norris", "src/assets/images/racers/lando.jpg"],
             ["Piastri", "src/assets/images/racers/oscar.jpg"],
             ["Alonso", "src/assets/images/racers/fernando.jpg"],
-            ["Stroll", "src/assets/images/racers/stroll.png"],
-            ["Ocon", "src/assets/images/racers/ocon.png"],
-            ["Gasly", "src/assets/images/racers/gasly.png"],
-            ["Bottas", "src/assets/images/racers/bottas.png"],
-            ["Zhou", "src/assets/images/racers/zhou.png"],
-            ["Magnussen", "src/assets/images/racers/magnussen.png"],
-            ["Hulkenberg", "src/assets/images/racers/hulkenberg.png"],
-            ["Albon", "src/assets/images/racers/albon.png"],
-            ["Sargeant", "src/assets/images/racers/sargeant.png"],
-            ["Tsunoda", "src/assets/images/racers/tsunoda.png"],
-            ["Ricciardo", "src/assets/images/racers/ricciardo.png"]
+            ["Stroll", "src/assets/images/racers/lance.jpg"],
+            ["Ocon", "src/assets/images/racers/esteban.jpg"],
+            ["Gasly", "src/assets/images/racers/pierre.jpg"],
+            ["Bottas", "src/assets/images/racers/valtteri.jpg"],
+            ["Zhou", "src/assets/images/racers/zhou.jpg"],
+            ["Magnussen", "src/assets/images/racers/kevin.jpg"],
+            ["Hulkenberg", "src/assets/images/racers/nico.jpg"],
+            ["Albon", "src/assets/images/racers/alexander.jpg"],
+            ["Sargeant", "src/assets/images/racers/logan.jpg"],
+            ["Tsunoda", "src/assets/images/racers/yuki.jpg"],
+            ["Ricciardo", "src/assets/images/racers/daniel.jpg"]
         ]);
     }
 
