@@ -51,6 +51,7 @@ const RacerDashboard = ({ onSelectDriver }) => {
                 headshot_url={racer.headshot_url}
                 full_name={`${racer.full_name}`}
                 driver_number={racer.driver_number}
+                team_colour={racer.team_colour}
               />
             </div>
           ))}
