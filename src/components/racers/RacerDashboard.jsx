@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import RacerComponent from "./RacerComponent";
 import DriverProfile from "./DriverProfile";
 import axios from 'axios';
-import { OPENF1_DRIVERS_API } from "../config";
+import { OPENF1_DRIVERS_API } from "../../config";
 
 const RacerDashboard = ({ onSelectDriver }) => {
   const [racers, setRacers] = useState([]);

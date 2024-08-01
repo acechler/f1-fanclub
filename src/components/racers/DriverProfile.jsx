@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import RacerMap from "./Utilities/RacerMap";
+import RacerMap from "../Utilities/RacerMap";
 
 const DriverProfile = ({ driver, onDeselectDriver }) => {
   const racerMap = new RacerMap();
