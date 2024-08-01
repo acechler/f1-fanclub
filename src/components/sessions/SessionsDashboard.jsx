@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import MeetingComponent from "./MeetingComponent";
+import SessionsComponent from "./SessionsComponent.jsx";
 import axios from "axios";
 import { OPENF1_MEETINGS_API } from "../../config.js";
 
-const MeetingDashboard = () => {
-  const [meetings, setMeetings] = useState([]);
+const SessionsDashboard = () => {
+  const [sessions, setSessions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -13,7 +13,7 @@ const MeetingDashboard = () => {
       .get(OPENF1_MEETINGS_API)
       .then((response) => {
         console.log(response.data);
-        setMeetings(response.data);
+        setSessions(response.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -33,11 +33,11 @@ const MeetingDashboard = () => {
   return (
     <div className="">
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
-        {meetings.map((meet) => (
-          <div key={meet.session_key}>
-            <MeetingComponent
-              country_name={meet.country_name}
-              circuit_short_name={`${meet.circuit_short_name}`}
+        {sessions.map((session) => (
+          <div key={session.session_key}>
+            <SessionsComponent
+              country_name={session.country_name}
+              circuit_short_name={`${session.circuit_short_name}`}
             />
           </div>
         ))}
@@ -46,4 +46,4 @@ const MeetingDashboard = () => {
   );
 };
 
-export default MeetingDashboard;
+export default SessionsDashboard;

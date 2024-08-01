@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-const MeetingComponent = ({ country_name, circuit_short_name }) => {
+const SessionsComponent = ({ country_name, circuit_short_name }) => {
   const [countryFlagUrl, setCountryFlagUrl] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -62,9 +62,9 @@ const MeetingComponent = ({ country_name, circuit_short_name }) => {
   );
 };
 
-MeetingComponent.propTypes = {
+SessionsComponent.propTypes = {
   country_name: PropTypes.string.isRequired,
   circuit_short_name: PropTypes.string.isRequired,
 };
 
-export default MeetingComponent;
+export default SessionsComponent;
