@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import DriverProfile from '../DriverProfile';
-import RacerDashboard from '../RacerDashboard';
+import DriverProfile from '../racers/DriverProfile';
+import RacerDashboard from '../racers/RacerDashboard';
 
 const F1RacerPage = () => {
   const [selectedDriver, setSelectedDriver] = useState(null);

@@ -1,19 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import RacerMap from "../components/Utilities/RacerMap";
-
+import RacerMap from "../Utilities/RacerMap";
 
 const DriverProfile = ({ driver, onDeselectDriver }) => {
   const racerMap = new RacerMap();
-  const imgUrl = racerMap.getImageSrc(driver.last_name);
+  const headshotUrl = racerMap.getImageSrc(driver.last_name);
 
 
   return (
-    <div className="flow-root">
+    <div className="flow-root p-4 rounded-lg">
       <img
-        src={imgUrl}
+        src={headshotUrl}
         alt={`Headshot of ${driver.full_name}`}
-        className="object-cover rounded-full mx-auto my-10"
+        className="object-cover rounded-full mx-auto"
         loading="lazy"
         style={{ maxWidth: "100%", height: "auto" }}
       />
@@ -40,7 +39,13 @@ const DriverProfile = ({ driver, onDeselectDriver }) => {
           </dd>
         </div>
       </dl>
-      <button className="mt-10" onClick={onDeselectDriver} aria-label="Select another racer">Select Another Racer</button>
+      <button 
+        onClick={onDeselectDriver} 
+        aria-label="Select another racer" 
+        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+      >
+        Select Another Racer
+      </button>
     </div>
   );
 };
@@ -52,6 +57,7 @@ DriverProfile.propTypes = {
     driver_number: PropTypes.number.isRequired,
     team_name: PropTypes.string.isRequired,
     headshot_url: PropTypes.string,
+    team_colour: PropTypes.string,
   }).isRequired,
   onDeselectDriver: PropTypes.func.isRequired,
 };

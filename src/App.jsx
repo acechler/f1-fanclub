@@ -4,7 +4,7 @@ import F1RacerPage from "./components/pages/F1RacerPage";
 import AboutPage from "./components/pages/AboutPage";
 import NewsPage from "./components/pages/NewsPage";
 import Navbar from "./components/Navbar";
-
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
             <Route path="/news" element={<NewsPage/>} />
           </Routes>
         </div>
+        <Footer/>
       </div>
     </Router>
   );

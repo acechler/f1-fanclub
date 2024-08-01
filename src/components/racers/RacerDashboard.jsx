@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import RacerComponent from "./RacerComponent";
 import DriverProfile from "./DriverProfile";
-import { OPENF1_DRIVERS_API } from "../config";
+import axios from 'axios';
+import { OPENF1_DRIVERS_API } from "../../config";
 
 const RacerDashboard = ({ onSelectDriver }) => {
   const [racers, setRacers] = useState([]);
@@ -10,11 +11,10 @@ const RacerDashboard = ({ onSelectDriver }) => {
   const [selectedRacer, setSelectedRacer] = useState(null);
 
   useEffect(() => {
-    fetch(OPENF1_DRIVERS_API)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setRacers(data);
+    axios.get(OPENF1_DRIVERS_API)
+      .then((response) => {
+        console.log(response.data);
+        setRacers(response.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -51,6 +51,7 @@ const RacerDashboard = ({ onSelectDriver }) => {
                 headshot_url={racer.headshot_url}
                 full_name={`${racer.full_name}`}
                 driver_number={racer.driver_number}
+                team_colour={racer.team_colour}
               />
             </div>
           ))}
