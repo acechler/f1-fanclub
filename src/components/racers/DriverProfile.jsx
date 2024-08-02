@@ -19,7 +19,7 @@ const DriverProfile = ({ driver, onDeselectDriver }) => {
       <dl className="-my-3 divide-y divide-gray-100 text-sm">
         <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
           <dt className="font-medium text-gray-900">Name</dt>
-          <dd className="text-gray-700 sm:col-span-2">{driver.full_name}</dd>
+          <dd className="text-gray-700 sm:col-span-2">{driver.full_name === "Lewis HAMILTON" ? "Lewis Rizzler" : driver.full_name}</dd>
         </div>
         <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
           <dt className="font-medium text-gray-900">Team</dt>
