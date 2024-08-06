@@ -8,7 +8,7 @@ const DriverProfile = ({ driver, onDeselectDriver }) => {
 
 
   return (
-    <div className="flow-root p-4 rounded-lg">
+    <div className="flow-root p-4 mt-5 rounded-lg">
       <img
         src={headshotUrl}
         alt={`Headshot of ${driver.full_name}`}
@@ -16,7 +16,7 @@ const DriverProfile = ({ driver, onDeselectDriver }) => {
         loading="lazy"
         style={{ maxWidth: "100%", height: "auto" }}
       />
-      <dl className="-my-3 divide-y divide-gray-100 text-sm">
+      <dl className="-my-3 mt-20 divide-y divide-gray-100 text-sm">
         <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
           <dt className="font-medium text-gray-900">Name</dt>
           <dd className="text-gray-700 sm:col-span-2">{driver.full_name === "Lewis HAMILTON" ? "Lewis Rizzler" : driver.full_name}</dd>
