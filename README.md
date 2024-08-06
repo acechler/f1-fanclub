@@ -5,12 +5,7 @@
 
 This project is a fan club website for Formula 1 enthusiasts. It is a private project built using modern web development technologies.
 
-## Project Details
 
-- **Name:** f1-fanclub
-- **Version:** 0.0.0
-- **Type:** module
-- **Private:** true
 
 ## Scripts
 
