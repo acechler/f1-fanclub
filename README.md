@@ -20,6 +20,12 @@ The following scripts are available for development and build processes:
 - **Preview:** `npm run preview`
   - Serves the built project for preview using Vite.
 
+## API
+
+
+https://restcountries.com
+https://openf1.org/
+
 ## Dependencies
 
 The project relies on the following dependencies:
