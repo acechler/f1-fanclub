@@ -1,10 +1,11 @@
 
 # F1 Fanclub
 
+Name: Aaron Echler
+
 ## Overview
 
-This project is a fan club website for Formula 1 enthusiasts. It is a private project built using modern web development technologies.
-
+This project is a fan club website for Formula 1. I have an enjoyment of go-kart racing and Formula 1. I wanted to create a website that is better than my previous web dev final for college. This project implements more features compared to my final. It has API calls, tailwindcss, and React.js.
 
 
 ## Scripts
