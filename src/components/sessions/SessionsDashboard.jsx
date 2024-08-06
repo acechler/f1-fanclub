@@ -1,49 +1,63 @@
 import React, { useState, useEffect } from "react";
-import SessionsComponent from "./SessionsComponent.jsx";
+import SessionsComponent from "./SessionsComponent";
+import SessionProfile from "./SessionProfile";
 import axios from "axios";
-import { OPENF1_MEETINGS_API } from "../../config.js";
+import { OPENF1_SESSIONS_API } from "../../config";
 
 const SessionsDashboard = () => {
-  const [sessions, setSessions] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+    const [sessions, setSessions] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [selectedSession, setSelectedSession] = useState(null);
 
-  useEffect(() => {
-    axios
-      .get(OPENF1_MEETINGS_API)
-      .then((response) => {
-        console.log(response.data);
-        setSessions(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-      });
-  }, []);
+    useEffect(() => {
+        axios
+            .get(OPENF1_SESSIONS_API)
+            .then((response) => {
+                setSessions(response.data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                setError(error);
+                setLoading(false);
+            });
+    }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
 
-  return (
-    <div className="">
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
-        {sessions.map((session) => (
-          <div key={session.session_key}>
-            <SessionsComponent
-              country_name={session.country_name}
-              circuit_short_name={`${session.circuit_short_name}`}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+    const handleSelectSession = (session) => {
+        setSelectedSession(session);
+    };
+
+    const handleDeselectSession = () => {
+        setSelectedSession(null);
+    };
+
+    return (
+        <div>
+            {selectedSession ? (
+                <SessionProfile session={selectedSession} onDeselectSession={handleDeselectSession} />
+            ) : (
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+                    {sessions.map((session) => (
+                        <div key={session.session_key} onClick={() => handleSelectSession(session)}>
+                            <SessionsComponent
+                                country_name={session.country_name}
+                                circuit_short_name={session.circuit_short_name}
+                                year={session.year}
+                            />
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
 };
 
 export default SessionsDashboard;
