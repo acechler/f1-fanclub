@@ -15,7 +15,6 @@ const SessionsComponent = ({ country_name, circuit_short_name, year }) => {
                     setCountryFlagUrl(data[0].flags.png);
                 }
             } catch (error) {
-                console.error('Error fetching country flag:', error);
                 setError('Failed to load country flag');
             } finally {
                 setLoading(false);
