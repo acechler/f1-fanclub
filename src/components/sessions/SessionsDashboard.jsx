@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SessionsComponent from "./SessionsComponent";
 import SessionProfile from "./SessionProfile";
-import axios from "axios";
-import { OPENF1_SESSIONS_API } from "../../config";
+import OpenF1 from "../Utilities/OpenF1"; // Import the OpenF1 class
 
 const SessionsDashboard = () => {
     const [sessions, setSessions] = useState([]);
@@ -11,17 +10,20 @@ const SessionsDashboard = () => {
     const [selectedSession, setSelectedSession] = useState(null);
 
     useEffect(() => {
-        axios
-            .get(OPENF1_SESSIONS_API)
-            .then((response) => {
-                setSessions(response.data);
-                console.log(response.data);
+        const openF1Instance = new OpenF1();
+
+        const fetchSessions = async () => {
+            try {
+                const response = await openF1Instance.getSessions({ year: 2024, session_name: 'Race' });
+                setSessions(response);
                 setLoading(false);
-            })
-            .catch((error) => {
+            } catch (error) {
                 setError(error);
                 setLoading(false);
-            });
+            }
+        };
+
+        fetchSessions();
     }, []);
 
     if (loading) {

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
-import { OPENF1_LAPS_API, OPENF1_DRIVERS_WILD_API, OPENF1_POSITIONS_API } from "../../config";
+import OpenF1 from "../Utilities/OpenF1"; // Import the OpenF1 class
 
 const PositionTable = ({ session_key }) => {
     const [laps, setLaps] = useState([]);
@@ -11,14 +10,16 @@ const PositionTable = ({ session_key }) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        const openF1Instance = new OpenF1(); // Create an instance of OpenF1
+
         const fetchData = async () => {
             try {
-                const lapResponse = await axios.get(`${OPENF1_LAPS_API}session_key=${session_key}&lap_number=44`);
-                const driverResponse = await axios.get(`${OPENF1_DRIVERS_WILD_API}${session_key}`);
-                const positionResponse = await axios.get(`${OPENF1_POSITIONS_API}session_key=${session_key}`);
-                setLaps(lapResponse.data);
-                setDrivers(driverResponse.data);
-                setPositions(positionResponse.data);
+                const lapResponse = await openF1Instance.getLaps({ session_key, lap_number: 44 });
+                const driverResponse = await openF1Instance.getDrivers({ session_key });
+                const positionResponse = await openF1Instance.getPositions({ session_key });
+                setLaps(lapResponse);
+                setDrivers(driverResponse);
+                setPositions(positionResponse);
                 setLoading(false);
             } catch (error) {
                 setError(error);
@@ -29,9 +30,22 @@ const PositionTable = ({ session_key }) => {
         fetchData();
     }, [session_key]);
 
+    const driverMap = useMemo(() => {
+        return drivers.reduce((acc, driver) => {
+            acc[driver.driver_number] = driver;
+            return acc;
+        }, {});
+    }, [drivers]);
+
+    const positionMap = useMemo(() => {
+        return positions.reduce((acc, position) => {
+            acc[position.driver_number] = position;
+            return acc;
+        }, {});
+    }, [positions]);
+
     const getDriverName = (driverNumber) => {
-        const driver = drivers.find(d => d.driver_number === driverNumber);
-        return driver ? driver.full_name : "Unknown Driver";
+        return driverMap[driverNumber]?.full_name || "Unknown Driver";
     };
 
     const getDriverLapTime = (driverNumber) => {
@@ -40,13 +54,11 @@ const PositionTable = ({ session_key }) => {
     };
 
     const getDriverTeam = (driverNumber) => {
-        const driver = drivers.find(d => d.driver_number === driverNumber);
-        return driver ? driver.team_name : "Unknown Team";
+        return driverMap[driverNumber]?.team_name || "Unknown Team";
     };
 
     const getDriverPosition = (driverNumber) => {
-        const position = positions.find(p => p.driver_number === driverNumber);
-        return position ? position.position : "Unknown Position";
+        return positionMap[driverNumber]?.position || "Unknown Position";
     };
 
     if (loading) {
@@ -82,18 +94,37 @@ const PositionTable = ({ session_key }) => {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                     {laps.map((lap, index) => (
-                        <tr key={index}>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{getDriverPosition(lap.driver_number)}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{lap.driver_number}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{getDriverName(lap.driver_number)}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{getDriverTeam(lap.driver_number)}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{getDriverLapTime(lap.driver_number)}</td>
-                        </tr>
+                        <TableRow
+                            key={index}
+                            driverNumber={lap.driver_number}
+                            getDriverName={getDriverName}
+                            getDriverLapTime={getDriverLapTime}
+                            getDriverTeam={getDriverTeam}
+                            getDriverPosition={getDriverPosition}
+                        />
                     ))}
                 </tbody>
             </table>
         </div>
     );
+};
+
+const TableRow = ({ driverNumber, getDriverName, getDriverLapTime, getDriverTeam, getDriverPosition }) => (
+    <tr>
+        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{getDriverPosition(driverNumber)}</td>
+        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{driverNumber}</td>
+        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{getDriverName(driverNumber)}</td>
+        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{getDriverTeam(driverNumber)}</td>
+        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{getDriverLapTime(driverNumber)}</td>
+    </tr>
+);
+
+TableRow.propTypes = {
+    driverNumber: PropTypes.number.isRequired,
+    getDriverName: PropTypes.func.isRequired,
+    getDriverLapTime: PropTypes.func.isRequired,
+    getDriverTeam: PropTypes.func.isRequired,
+    getDriverPosition: PropTypes.func.isRequired,
 };
 
 PositionTable.propTypes = {
