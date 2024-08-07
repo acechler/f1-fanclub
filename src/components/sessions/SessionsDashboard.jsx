@@ -15,6 +15,7 @@ const SessionsDashboard = () => {
             .get(OPENF1_SESSIONS_API)
             .then((response) => {
                 setSessions(response.data);
+                console.log(response.data);
                 setLoading(false);
             })
             .catch((error) => {
