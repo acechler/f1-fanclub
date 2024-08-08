@@ -1,3 +1,5 @@
+// DriverProfile.jsx
+
 import React from "react";
 import PropTypes from "prop-types";
 import RacerMap from "../Utilities/RacerMap";
@@ -5,7 +7,7 @@ import RacerMap from "../Utilities/RacerMap";
 const DriverProfile = ({ driver, onDeselectDriver }) => {
   const racerMap = new RacerMap();
   const headshotUrl = racerMap.getImageSrc(driver.last_name);
-
+  const racerBio = racerMap.getRacerBio(driver.last_name);
 
   return (
     <div className="flow-root p-4 mt-5 rounded-lg">
@@ -19,7 +21,7 @@ const DriverProfile = ({ driver, onDeselectDriver }) => {
       <dl className="-my-3 mt-20 divide-y divide-gray-100 text-sm">
         <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
           <dt className="font-medium text-gray-900">Name</dt>
-          <dd className="text-gray-700 sm:col-span-2">{driver.full_name === "Lewis HAMILTON" ? "Lewis Rizzler" : driver.full_name}</dd>
+          <dd className="text-gray-700 sm:col-span-2">{driver.full_name}</dd>
         </div>
         <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
           <dt className="font-medium text-gray-900">Team</dt>
@@ -31,12 +33,7 @@ const DriverProfile = ({ driver, onDeselectDriver }) => {
         </div>
         <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
           <dt className="font-medium text-gray-900">Bio</dt>
-          <dd className="text-gray-700 sm:col-span-2">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facilis
-            debitis explicabo doloremque impedit nesciunt dolorem facere, dolor
-            quasi veritatis quia fugit aperiam aspernatur neque molestiae labore
-            aliquam soluta architecto?
-          </dd>
+          <dd className="text-gray-700 sm:col-span-2">{racerBio}</dd>
         </div>
       </dl>
       <button 
